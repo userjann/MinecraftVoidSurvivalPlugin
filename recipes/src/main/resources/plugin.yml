@@ -1,0 +1,8 @@
+name: Recipes
+version: 1.0-SNAPSHOT
+main: ch.mc.jr.recipes.Recipes
+api-version: 1.20
+commands:
+  recipes:
+    description: Opens the recipes GUI.
+    usage: /recipes

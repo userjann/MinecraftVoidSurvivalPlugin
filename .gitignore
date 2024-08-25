@@ -16,4 +16,7 @@ buildNumber.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 /recipes/.idea/
+/recipes/*.iml
 /ItemGenerator/.idea/
+/.idea/
+/ItemGenerator/*.iml

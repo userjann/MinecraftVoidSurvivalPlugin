@@ -1,0 +1,4 @@
+name: ItemGenerator
+version: '${project.version}'
+main: ch.mc.jr.ItemGenerator
+api-version: '1.20'
