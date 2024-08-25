@@ -1,19 +1,22 @@
 package ch.mc.jr.recipes;
+import ch.mc.jr.Events.GUIevents;
+import ch.mc.jr.commands.Commands;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class Recipes extends JavaPlugin implements CommandExecutor, Listener {
+public final class Recipes extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-
         registerRecipes();
+        getServer().getPluginManager().registerEvents(new GUIevents(), this);
+        getCommand("recipes").setExecutor(new Commands());
+
     }
 
     @Override
@@ -45,13 +48,13 @@ public final class Recipes extends JavaPlugin implements CommandExecutor, Listen
         chainmailChestplate.shape("X X", "XXX", "XXX");
         chainmailChestplate.setIngredient('X', new RecipeChoice.ExactChoice(strongNugget));
 
-        // Chainmail Leggings Recipe
+
         ItemStack chainLeggings = new ItemStack(Material.CHAINMAIL_LEGGINGS);
         ShapedRecipe chainmailLeggings = new ShapedRecipe(new NamespacedKey(this, "chainmail_leggings"), chainLeggings);
         chainmailLeggings.shape("XXX", "X X", "X X");
         chainmailLeggings.setIngredient('X', strongNugget.getType());
 
-        // Chainmail Boots Recipe
+
         ItemStack chainBoots = new ItemStack(Material.CHAINMAIL_BOOTS);
         ShapedRecipe chainmailBoots = new ShapedRecipe(new NamespacedKey(this, "chainmail_boots"), chainBoots);
         chainmailBoots.shape("   ", "X X", "X X");
