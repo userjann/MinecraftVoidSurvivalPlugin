@@ -9,32 +9,26 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class GUI implements InventoryHolder {
     protected Inventory inventory;
-
     protected ItemStack g = new ItemStack(Material.GRAY_STAINED_GLASS_PANE, 1);
-
     protected ItemStack p = new ItemStack(Material.OAK_PLANKS, 1);
-
     protected ItemStack s = new ItemStack(Material.STICK,1);
-
     protected ItemStack in = new ItemStack(Material.IRON_NUGGET, 1);
     protected ItemStack sn = new ItemStack(Material.IRON_NUGGET, 1);
     protected ItemStack h = new ItemStack(Material.CHAINMAIL_HELMET,1);
-
     protected ItemStack c = new ItemStack(Material.CHAINMAIL_CHESTPLATE,1);
-
     protected ItemStack l = new ItemStack(Material.CHAINMAIL_LEGGINGS,1);
-
     protected ItemStack b = new ItemStack(Material.CHAINMAIL_BOOTS,1);
-
     protected ItemStack n = null;
-
+    protected ItemStack ar = new ItemStack(Material.ARROW, 1);
     protected ItemStack ba = new ItemStack(Material.BARRIER, 1);
+    protected ItemStack ch = new ItemStack(Material.CHARCOAL, 1);
+    protected ItemStack f = new ItemStack(Material.FIRE_CHARGE, 1);
+    protected ItemStack a = new ItemStack(Material.TIPPED_ARROW,1);
 
 
     public GUI(String title){
@@ -59,6 +53,10 @@ public class GUI implements InventoryHolder {
         ItemMeta strongNuggetMeta = sn.getItemMeta();
         strongNuggetMeta.setDisplayName(ChatColor.BOLD + "Strong Iron Nugget");
         sn.setItemMeta(strongNuggetMeta);
+
+        ItemMeta arrow = a.getItemMeta();
+        arrow.setDisplayName("Explosive Arrow");
+        a.setItemMeta(arrow);
 
     }
     @NotNull

@@ -48,6 +48,14 @@ public class GUIevents implements Listener {
                 RecipeGUI gui = new RecipeGUI();
                 player.openInventory(gui.getInventory());
             }
+            if(event.getCurrentItem().getType() == Material.FIRE_CHARGE){
+                FireChargeGUI gui = new FireChargeGUI();
+                player.openInventory(gui.getInventory());
+            }
+            if(event.getCurrentItem().getType() == Material.TIPPED_ARROW){
+                ExplosiveArrowGUI gui = new ExplosiveArrowGUI();
+                player.openInventory(gui.getInventory());
+            }
 
         }
     }

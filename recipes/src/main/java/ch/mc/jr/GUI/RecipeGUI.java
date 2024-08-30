@@ -23,8 +23,8 @@ public class RecipeGUI extends GUI {
 
         List<ItemStack> Plank = Lists.newArrayList(
                 g, g, g, g, g, g, g, g, g,
-                g, p, sn, h, c, l, b, n, g,
-                g, n, n, n, n, n, n, n, g,
+                g, p, sn, h, c, l, b, f, g,
+                g, a, n, n, n, n, n, n, g,
                 g, n, n, n, n, n, n, n, g,
                 g, g, g, g, g, g, g, g, g
         );

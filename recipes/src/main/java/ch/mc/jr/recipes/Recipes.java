@@ -1,13 +1,17 @@
 package ch.mc.jr.recipes;
+import ch.mc.jr.Events.ExplosionArrowEvent;
 import ch.mc.jr.Events.GUIevents;
 import ch.mc.jr.commands.Commands;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.block.data.type.Fire;
+import org.bukkit.entity.Item;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
+import sun.awt.AWTAccessor;
 
 public final class Recipes extends JavaPlugin implements Listener {
 
@@ -15,6 +19,7 @@ public final class Recipes extends JavaPlugin implements Listener {
     public void onEnable() {
         registerRecipes();
         getServer().getPluginManager().registerEvents(new GUIevents(), this);
+        getServer().getPluginManager().registerEvents(new ExplosionArrowEvent(), this);
         getCommand("recipes").setExecutor(new Commands());
 
     }
@@ -33,7 +38,6 @@ public final class Recipes extends JavaPlugin implements Listener {
         ItemMeta strongNuggetMeta = strongNugget.getItemMeta();
         strongNuggetMeta.setDisplayName(ChatColor.BOLD + "Strong Iron Nugget");
         strongNugget.setItemMeta(strongNuggetMeta);
-
         ShapedRecipe strongIronNugget = new ShapedRecipe(new NamespacedKey(this, "strongNugget"), strongNugget);
         strongIronNugget.shape("YYY", "YYY", "   ");
         strongIronNugget.setIngredient('Y', Material.IRON_NUGGET);
@@ -60,12 +64,30 @@ public final class Recipes extends JavaPlugin implements Listener {
         chainmailBoots.shape("   ", "X X", "X X");
         chainmailBoots.setIngredient('X', strongNugget.getType());
 
+        ItemStack ExplosionArrow = new ItemStack(Material.TIPPED_ARROW);
+        ItemMeta ExplosionArrowMeta = ExplosionArrow.getItemMeta();
+        ExplosionArrowMeta.setDisplayName("Explosive Arrow");
+        ExplosionArrow.setItemMeta(ExplosionArrowMeta);
+        ShapedRecipe explosionArrow = new ShapedRecipe(new NamespacedKey( this, "explosion_arrow"), ExplosionArrow);
+        explosionArrow.shape("X  ","Y  ", "   ");
+        explosionArrow.setIngredient('Y', Material.ARROW);
+        explosionArrow.setIngredient('X', Material.FIRE_CHARGE);
+
+
+        ItemStack Firecharge = new ItemStack(Material.FIRE_CHARGE);
+        FurnaceRecipe firecharge = new FurnaceRecipe(Firecharge, Material.CHARCOAL);
+        firecharge.setCookingTime(100);
+        firecharge.setExperience(5);
+
+
         getServer().addRecipe(wood);
         getServer().addRecipe(strongIronNugget);
         getServer().addRecipe(chainmailHelmet);
         getServer().addRecipe(chainmailChestplate);
         getServer().addRecipe(chainmailLeggings);
         getServer().addRecipe(chainmailBoots);
+        getServer().addRecipe(explosionArrow);
+        getServer().addRecipe(firecharge);
     }
 
 
